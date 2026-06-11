@@ -3,14 +3,13 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { useAuth } from './hooks/useAuth';
 
-// Import pages
+//Here I  Import pages
 import Login from './pages/Login/Login';
 import Dashboard from './pages/Dashboard/Dashboard';
 import TaskDetail from './pages/TaskDetail/TaskDetail';
 import NotFound from './pages/NotFound/NotFound';
 
-// Protected Route wrapper component
-// This component ensures that only authenticated users can access certain routes
+
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth();
 
@@ -25,8 +24,7 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
-// Public Route wrapper component
-// This component redirects authenticated users away from login page to dashboard
+
 const PublicRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
 
@@ -40,7 +38,7 @@ const PublicRoute = ({ children }) => {
 const AppRoutes = () => {
   return (
     <Routes>
-      {/* Public login route - redirects to dashboard if already logged in */}
+      
       <Route
         path="/login"
         element={
@@ -50,7 +48,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Protected dashboard route - shows all tasks */}
+   
       <Route
         path="/dashboard"
         element={
@@ -60,7 +58,7 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Protected task detail route - shows individual task details */}
+     
       <Route
         path="/task/:id"
         element={
@@ -70,10 +68,10 @@ const AppRoutes = () => {
         }
       />
 
-      {/* Root path - redirect to dashboard if authenticated, login if not */}
+     
       <Route path="/" element={<Navigate to="/dashboard" replace />} />
 
-      {/* 404 Not Found - catch all unmatched routes */}
+    
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

@@ -13,7 +13,7 @@ const TaskDetail = () => {
   const [task, setTask] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Try to get task from route state first, otherwise retrieve from localStorage
+  //Here I am  Trying to get task from route state first, otherwise retrieve from localStorage
   useEffect(() => {
     if (location.state?.task) {
       // Task was passed through navigation state
@@ -33,13 +33,13 @@ const TaskDetail = () => {
     }
   }, [id, location]);
 
-  // Handle logout
+  
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
 
-  // Format date for display
+  
   const formatDate = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleDateString('en-US', {
@@ -49,7 +49,7 @@ const TaskDetail = () => {
     });
   };
 
-  // Get priority badge styling
+ 
   const getPriorityBadgeClass = (priority) => {
     switch (priority) {
       case 'high':
@@ -63,7 +63,7 @@ const TaskDetail = () => {
     }
   };
 
-  // Get status badge styling
+ 
   const getStatusBadgeClass = (status) => {
     switch (status) {
       case 'todo':
@@ -77,7 +77,7 @@ const TaskDetail = () => {
     }
   };
 
-  // Format status for display
+
   const formatStatus = (status) => {
     const statusMap = {
       todo: 'To Do',
@@ -121,12 +121,12 @@ const TaskDetail = () => {
       <Header user={user} onLogout={handleLogout} />
 
       <div className={styles.content}>
-        {/* Back button */}
+        
         <button onClick={() => navigate('/dashboard')} className={styles.backLink}>
           ← Back to board
         </button>
 
-        {/* Task header with priority badge */}
+        
         <div className={styles.taskHeader}>
           <div className={styles.headerTop}>
             <span className={`${styles.priorityBadge} ${getPriorityBadgeClass(task.priority)}`}>
@@ -136,7 +136,7 @@ const TaskDetail = () => {
           <h1>{task.title}</h1>
         </div>
 
-        {/* Task metadata section */}
+        
         <div className={styles.metadataSection}>
           <div className={styles.metadataRow}>
             <span className={styles.metadataLabel}>Status</span>
@@ -151,13 +151,13 @@ const TaskDetail = () => {
           </div>
         </div>
 
-        {/* Description section */}
+        
         <div className={styles.descriptionSection}>
           <h2>DESCRIPTION</h2>
           <p className={styles.description}>{task.description}</p>
         </div>
 
-        {/* Additional task info */}
+        
         <div className={styles.infoSection}>
           {task.createdAt && (
             <div className={styles.infoItem}>
@@ -173,7 +173,6 @@ const TaskDetail = () => {
         </div>
       </div>
 
-      {/* Add task button at bottom */}
       <button
         className={styles.addTaskBtn}
         onClick={() => navigate('/dashboard')}

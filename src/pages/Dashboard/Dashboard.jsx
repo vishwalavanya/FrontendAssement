@@ -9,21 +9,21 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const { user, logout } = useAuth();
 
-  // Task state management
+  // Here Task state management
   const [tasks, setTasks] = useState([]);
   const [filteredTasks, setFilteredTasks] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
 
-  // Filter state
+  //Here Filter state
   const [priorityFilter, setPriorityFilter] = useState('all');
 
-  // Initialize tasks from localStorage on component mount
+  //  Here Initialize tasks from localStorage on component mount
   useEffect(() => {
     const storedTasks = localStorage.getItem('tasks');
     if (storedTasks) {
       setTasks(JSON.parse(storedTasks));
     } else {
-      // Use initial data from specification if no stored tasks exist
+      
       const initialTasks = [
         {
           id: 2,
@@ -102,11 +102,11 @@ const Dashboard = () => {
     }
   }, []);
 
-  // Apply filters when tasks or priority filter changes
+  // Here Applying filters when tasks or priority filter changes
   useEffect(() => {
     let filtered = tasks;
 
-    // Filter by priority
+    
     if (priorityFilter !== 'all') {
       filtered = filtered.filter((task) => task.priority === priorityFilter);
     }
@@ -114,7 +114,7 @@ const Dashboard = () => {
     setFilteredTasks(filtered);
   }, [tasks, priorityFilter]);
 
-  // Add new task to the list
+  
   const handleAddTask = (newTask) => {
     const taskWithId = {
       ...newTask,
@@ -128,7 +128,7 @@ const Dashboard = () => {
     setShowAddModal(false);
   };
 
-  // Update existing task
+  // Here I  Update existing task
   const handleUpdateTask = (taskId, updatedTask) => {
     const updatedTasks = tasks.map((task) =>
       task.id === taskId ? { ...task, ...updatedTask } : task
@@ -137,35 +137,34 @@ const Dashboard = () => {
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  // Delete a task from the list
+  //Here I Delete a task from the list
   const handleDeleteTask = (taskId) => {
     const updatedTasks = tasks.filter((task) => task.id !== taskId);
     setTasks(updatedTasks);
     localStorage.setItem('tasks', JSON.stringify(updatedTasks));
   };
 
-  // Handle logout
+  
   const handleLogout = () => {
     logout();
     navigate('/login');
   };
 
-  // Get count of tasks in each status column
+  
   const getTaskCount = (status) => {
     return filteredTasks.filter((task) => task.status === status).length;
   };
 
-  // Separate tasks by status for display in columns
   const todoTasks = filteredTasks.filter((task) => task.status === 'todo');
   const inProgressTasks = filteredTasks.filter((task) => task.status === 'inprogress');
   const doneTasks = filteredTasks.filter((task) => task.status === 'done');
 
   return (
     <div className={styles.dashboardContainer}>
-      {/* LEFT SIDEBAR */}
+     
       <aside className={styles.sidebar}>
         <div className={styles.sidebarContent}>
-          {/* Logo Section */}
+         
           <div className={styles.logoSection}>
             <div className={styles.logo}>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -177,7 +176,7 @@ const Dashboard = () => {
             <p className={styles.subtitle}>Project Dashboard</p>
           </div>
 
-          {/* Add Task Button */}
+        
           <button
             className={styles.addTaskBtn}
             onClick={() => setShowAddModal(true)}
@@ -185,7 +184,6 @@ const Dashboard = () => {
             + Add Task
           </button>
 
-          {/* Logout Button */}
           <button
             className={styles.logoutBtn}
             onClick={() => {
@@ -198,9 +196,9 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* MAIN CONTENT */}
+      
       <main className={styles.mainContent}>
-        {/* Filter Section */}
+
         <div className={styles.filterSection}>
           <label className={styles.filterLabel}>Filter by priority</label>
           <select
@@ -215,9 +213,8 @@ const Dashboard = () => {
           </select>
         </div>
 
-        {/* Task Columns Container */}
         <div className={styles.columnsContainer}>
-          {/* TO DO Column */}
+        
           <div className={styles.column}>
             <div className={styles.columnHeader}>
               <div className={styles.headerLeft}>
@@ -258,7 +255,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* IN PROGRESS Column */}
+         
           <div className={styles.column}>
             <div className={styles.columnHeader}>
               <div className={styles.headerLeft}>
@@ -299,7 +296,7 @@ const Dashboard = () => {
             </div>
           </div>
 
-          {/* DONE Column */}
+          
           <div className={styles.column}>
             <div className={styles.columnHeader}>
               <div className={styles.headerLeft}>
@@ -342,7 +339,7 @@ const Dashboard = () => {
         </div>
       </main>
 
-      {/* Modal for adding new tasks */}
+    
       {showAddModal && (
         <AddTaskModal
           onClose={() => setShowAddModal(false)}

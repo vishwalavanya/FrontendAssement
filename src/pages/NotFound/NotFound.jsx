@@ -7,7 +7,7 @@ const NotFound = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
-  // Determine where to redirect based on authentication status
+ 
   const handleBack = () => {
     if (isAuthenticated) {
       navigate('/dashboard');
