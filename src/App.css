@@ -1,0 +1,27 @@
+/* App Container Styles */
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Default focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid #4f46e5;
+  outline-offset: 2px;
+}
+
+/* Button reset styles */
+button {
+  font-family: inherit;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(79, 70, 229, 0.2);
+  color: inherit;
+}
+
+::-moz-selection {
+  background-color: rgba(79, 70, 229, 0.2);
+  color: inherit;
+}

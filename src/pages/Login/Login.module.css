@@ -1,0 +1,245 @@
+.loginContainer {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  background: #f5f5f5;
+}
+
+.sidebar {
+  width: 35%;
+  background: linear-gradient(135deg, #1a1f2e 0%, #16213e 100%);
+  color: white;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.brandSection {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  color: #4f46e5;
+}
+
+.logo svg {
+  width: 32px;
+  height: 32px;
+}
+
+.brandSection h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.brandSection p {
+  font-size: 14px;
+  color: #b0b0b0;
+  margin-bottom: 40px;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+}
+
+.features li {
+  font-size: 14px;
+  color: #d0d0d0;
+  margin-bottom: 16px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.features li:before {
+  content: '●';
+  position: absolute;
+  left: 0;
+  color: #4f46e5;
+  font-size: 18px;
+}
+
+.formSection {
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.formCard {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.formCard h2 {
+  font-size: 28px;
+  color: #1a1f2e;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 24px;
+}
+
+.errorMessage {
+  background-color: #fee;
+  border: 1px solid #fcc;
+  color: #c33;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.formGroup input:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.inputError {
+  border-color: #ef4444 !important;
+}
+
+.fieldError {
+  display: block;
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.passwordInput {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.passwordInput input {
+  width: 100%;
+  padding-right: 40px;
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #4f46e5 0%, #4338ca 100%);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.submitBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.testCredentials {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e5e7eb;
+  font-size: 13px;
+  color: #6b7280;
+  background: #fafafa;
+  padding: 16px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.testCredentials p {
+  margin: 0;
+}
+
+.testCredentials strong {
+  color: #1f2937;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+  .loginContainer {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    padding: 40px 20px;
+  }
+
+  .formSection {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .formCard {
+    padding: 30px;
+  }
+
+  .brandSection h1 {
+    font-size: 24px;
+  }
+}
