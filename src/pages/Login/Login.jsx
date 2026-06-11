@@ -39,35 +39,45 @@ const Login = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setApiError('');
+  e.preventDefault();
+  setApiError('');
 
-    const errors = validateForm();
-    setValidationErrors(errors);
+  const errors = validateForm();
+  setValidationErrors(errors);
 
-    if (Object.keys(errors).length > 0) {
+  if (Object.keys(errors).length > 0) {
+    return;
+  }
+
+  try {
+    // Only allow this email and password
+    if (
+      email !== 'sara@example.com' ||
+      password !== 'user123'
+    ) {
+      setApiError('Invalid email or password');
       return;
     }
 
-    try {
-      // For assessment purposes - accept any valid email/password format
-      // In production, this would call the real API
-      const mockUser = {
-        id: 101,
-        name: 'Test User',
-        email: email,
-      };
+    const mockUser = {
+      id: 101,
+      name: 'Sara',
+      email: 'sara@example.com',
+    };
 
-      const mockToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMX0.mock_token';
+    const mockToken =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEwMX0.mock_token';
 
-      login(mockToken, mockUser);
-      setEmail('');
-      setPassword('');
-      navigate('/dashboard');
-    } catch (err) {
-      setApiError(err.message || 'Login failed. Please try again.');
-    }
-  };
+    login(mockToken, mockUser);
+
+    setEmail('');
+    setPassword('');
+
+    navigate('/dashboard');
+  } catch (err) {
+    setApiError(err.message || 'Login failed. Please try again.');
+  }
+};
 
   return (
     <div className={styles.loginContainer}>
@@ -144,16 +154,6 @@ const Login = () => {
               Sign in
             </button>
           </form>
-
-          <div className={styles.testCredentials}>
-            <p>
-              <strong>For Testing:</strong>
-              <br />
-              Email: any@email.com
-              <br />
-              Password: any password (6+ chars)
-            </p>
-          </div>
         </div>
       </div>
     </div>
